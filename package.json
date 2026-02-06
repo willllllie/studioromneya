@@ -1,0 +1,13 @@
+{
+  "name": "studioromneya",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "StudioRomneya single-page landing site",
+  "scripts": {
+    "dev": "bun run server.js",
+    "build": "echo 'No build step needed - static files ready to deploy'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

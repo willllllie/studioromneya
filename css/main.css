@@ -1,0 +1,212 @@
+/* Main styles from Figma design */
+body {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: #A04B26;
+}
+
+/* Header styles */
+.header {
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-6);
+  border-bottom: none;
+}
+
+.header .grid {
+  align-items: start;
+}
+
+.header__logo h1 {
+  font-size: var(--font-size-logo);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0;
+  vertical-align: top;
+  height: 52px;
+  width: 200px;
+  line-height: 24px;
+}
+
+.header__nav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.nav-link {
+  font-size: var(--font-size-nav);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: var(--font-weight-normal);
+  transition: opacity 0.2s ease;
+}
+
+.nav-link:hover {
+  opacity: 0.7;
+}
+
+/* Main content area */
+.main-content {
+  padding-top: var(--space-12);
+  padding-bottom: var(--space-12);
+}
+
+.main-content .grid {
+  margin-top: 58px; /* Grid top at 196px from viewport (138px + 58px) */
+}
+
+/* Staggered fade-in for paragraph text */
+@keyframes text-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Text content section */
+.text-content {
+  padding-right: var(--space-8);
+}
+
+.body-text {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  margin-bottom: var(--space-6);
+  font-weight: var(--font-weight-normal);
+  opacity: 0;
+  animation: text-fade-in 0.8s ease-out forwards;
+}
+
+.text-content .body-text:nth-child(1) { animation-delay: 0s; }
+.text-content .body-text:nth-child(2) { animation-delay: 0.2s; }
+.text-content .body-text:nth-child(3) { animation-delay: 0.4s; }
+.text-content .body-text:nth-child(4) { animation-delay: 0.6s; }
+
+.body-text:last-child {
+  margin-bottom: 0;
+}
+
+/* Contact section */
+.contact-section {
+  margin-bottom: var(--space-8);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.contact-item {
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  font-weight: var(--font-weight-normal);
+  margin: 0;
+  line-height: var(--line-height-normal);
+}
+
+/* Image container */
+.image-container {
+  width: 100%;
+  margin-top: var(--space-8);
+}
+
+.feature-image {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  display: block;
+  object-fit: cover;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header__logo {
+    grid-column: span 12;
+  }
+  
+  .header__nav {
+    display: none;
+  }
+  
+  .content-left,
+  .content-right {
+    grid-column: span 12;
+  }
+  
+  .text-content {
+    padding-right: 0;
+    margin-bottom: var(--space-8);
+  }
+  
+  .contact-section {
+    margin-bottom: var(--space-6);
+  }
+  
+  .image-container {
+    margin-top: var(--space-6);
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .content-left {
+    grid-column: span 7;
+  }
+  
+  .content-right {
+    grid-column: span 5;
+  }
+  
+  .header__nav {
+    display: flex;
+    grid-column: 8 / span 5;
+  }
+}
+
+/* Desktop - text left, right column spans 9–11 (3 columns) */
+@media (min-width: 1025px) {
+  .content-left {
+    grid-column: span 6;
+  }
+  
+  .content-right {
+    grid-column: 9 / span 3;
+  }
+  
+  .header .header__nav {
+    grid-column: 9 / span 3;
+  }
+}
+
+/* Animation-ready classes */
+.header,
+.text-content,
+.contact-section,
+.image-container {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
